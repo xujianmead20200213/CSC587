@@ -19,7 +19,6 @@ colSums(su)
 sigma1 <- data.frame(X = rnorm(10000, mean = 0, sd = 0.2))
 #(b) mean=0, sigma=0.5
 sigma2 <- data.frame(X = rnorm(10000, mean = 0, sd = 0.5))
-#Answer the sigma 0.5 is lower/shorter and wider.
 #Please save your figures as image from RStudio. 
 #(Hint: to see the difference in plots you may need to set the xlim parameter in plot function to c(-5,5))
 # Start visualizing data using the ggplot2 package.
@@ -28,6 +27,9 @@ sigma1ggpot = ggplot(sigma1, aes(x = X)) + geom_histogram(binwidth = 0.001) + xl
 sigma2ggpot = ggplot(sigma2, aes(x = X)) + geom_histogram(binwidth = 0.001) + xlim(c(-5, 5))
 ggsave("histogram_sigma1.png", plot = sigma1ggpot, width = 2, height = 2, dpi = 5000)
 ggsave("histogram_sigma2.png", plot = sigma2ggpot, width = 2, height = 2, dpi = 5000)
+#Answer the sigma 0.5 is lower/shorter and wider.The sigma 0.5 is lower/shorter and wider. 
+#The reason for these differences is that the standard deviation (sigma) controls the spread of the distribution.
+#A smaller sigma results in a narrower distribution, while a larger sigma leads to a wider distribution.
 
 #3. Perform the steps below with ”dat” dataframe which is just a sample data for you to observe how each plot function
 #( 3b through 3e ) works. Notice that you need to have ggplot2 library installed on your system. Please refer slides how
