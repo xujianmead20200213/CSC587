@@ -85,7 +85,7 @@ passengers %>% filter(Sex=="male")
 #This code arranges the passengers data in descending order based on the 'Fare' column.
 passengers %>% arrange(desc(Fare))
 #(d) passengers \%>\% mutate(FamSize = Parch + SibSp)
-#This code adds a new column 'FamSize' with column 'Parch' and 'SibSp' to the passengers data.
+#This code adds a new column 'FamSize' with the value of column 'Parch' plus the value of column 'SibSp' to the passengers data.
 passengers %>% mutate(FamSize = Parch + SibSp)
 #(e) passengers \%>\% group_by(Sex) \%>\% summarise(meanFare = mean(Fare), numSurv = sum(Survived))
 #This code groups the passengers data by the 'Sex' column. Then It then calculates the mean of 'Fare' and the sum of 'Survived' for each group ('Sex').
