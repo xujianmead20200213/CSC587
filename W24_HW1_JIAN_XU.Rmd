@@ -1,8 +1,9 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
@@ -21,7 +22,8 @@ data.file3 <- file.path('data', 'titanic.csv')
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like
+this:
 
 ```{r}
 #1. Use ”Su_raw_matrix.txt” for the following questions (30 points).
@@ -52,8 +54,8 @@ sigma2 <- data.frame(X = rnorm(10000, mean = 0, sd = 0.5))
 #Please save your figures as image from RStudio. 
 #(Hint: to see the difference in plots you may need to set the xlim parameter in plot function to c(-5,5))
 # Start visualizing data using the ggplot2 package.
-sigma1ggpot = ggplot(sigma1, aes(x = X)) + geom_histogram(binwidth = 0.01) + xlim(c(-5, 5))
-sigma2ggpot = ggplot(sigma2, aes(x = X)) + geom_histogram(binwidth = 0.01) + xlim(c(-5, 5))
+sigma1ggpot = ggplot(sigma1, aes(x = X)) + geom_histogram(binwidth = 0.05) + xlim(c(-5, 5))
+sigma2ggpot = ggplot(sigma2, aes(x = X)) + geom_histogram(binwidth = 0.05) + xlim(c(-5, 5))
 ```
 
 ```{r}
@@ -84,24 +86,28 @@ dat <- data.frame(cond = factor(rep(c("A","B"), each=200)), rating = c(rnorm(200
 t1 = ggplot(dat, aes(x=rating, fill=cond)) + geom_histogram(binwidth=.5, alpha=.5, position="identity")
 show(t1)
 ```
+
 ```{r}
 #(c) # Interleaved histograms
 #ggplot(dat, aes(x=rating, fill=cond)) + geom_histogram(binwidth=.5, position="dodge")
 t2 = ggplot(dat, aes(x=rating, fill=cond)) + geom_histogram(binwidth=.5, position="dodge")
 show(t2)
 ```
+
 ```{r}
 #(d) # Density plots
 #ggplot(dat, aes(x=rating, colour=cond)) + geom_density()
 t3 = ggplot(dat, aes(x=rating, colour=cond)) + geom_density()
 show(t3)
 ```
+
 ```{r}
 #(e) # Density plots with semitransparent fill
 #ggplot(dat, aes(x=rating, fill=cond)) + geom_density(alpha=.3)
 t4 = ggplot(dat, aes(x=rating, fill=cond)) + geom_density(alpha=.3)
 show(t4)
 ```
+
 ```{r}
 #(f) Read ”diabetes_train.csv” into a variable called diabetes and apply the same functions 3b through 3e for the
 #mass attribute of diabetes and save the images. (Hint: instead of cond above, use the class attribute to color
@@ -113,18 +119,23 @@ p2 = ggplot(diabetes, aes(x=mass, fill=class)) + geom_histogram(binwidth=.5, pos
 p3 = ggplot(diabetes, aes(x=mass, colour=class)) + geom_density()
 p4 = ggplot(diabetes, aes(x=mass, fill=class)) + geom_density(alpha=.3)
 ```
+
 ```{r}
 show(p1)
 ```
+
 ```{r}
 show(p2)
 ```
+
 ```{r}
 show(p3)
 ```
+
 ```{r}
 show(p4)
 ```
+
 ```{r}
 #4. Read the titanic.csv file from DATA folder to a variable named passengers and perform the following steps and
 #explain the operation very briefly (20 points):
@@ -133,22 +144,26 @@ passengers <- read.csv(data.file3, header = TRUE, sep = ',')
 print("First drops rows where any column contains a missing value from passengers. Then make the summary.")
 passengers %>% drop_na() %>% summary()
 ```
+
 ```{r}
 #(b) passengers \%>\% filter(Sex == "male")
 print("This code filters the passengers data to include only rows where the 'Sex' column is equal to 'male'.")
 passengers %>% filter(Sex=="male")
 ```
+
 ```{r}
 #(c) passengers \%>\% arrange(desc(Fare))
 print("This code arranges the passengers data in descending order based on the 'Fare' column.")
 passengers %>% arrange(desc(Fare))
 ```
+
 ```{r}
 #(d) passengers \%>\% mutate(FamSize = Parch + SibSp)
 print("This code adds a new column 'FamSize' with the value of column 'Parch' plus the value of column 'SibSp' to the passengers data.")
 #This code adds a new column 'FamSize' with column 'Parch' and 'SibSp' to the passengers data.
 passengers %>% mutate(FamSize = Parch + SibSp)
 ```
+
 ```{r}
 #(e) passengers \%>\% group_by(Sex) \%>\% summarise(meanFare = mean(Fare), numSurv = sum(Survived))
 print("This code groups the passengers data by the 'Sex' column. Then It then calculates the mean of 'Fare' and the sum of 'Survived' for each group ('Sex').")
