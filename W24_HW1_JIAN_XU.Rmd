@@ -1,7 +1,8 @@
 ---
 output:
-  html_document: default
+  word_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -18,31 +19,19 @@ data.file2 <- file.path('data', 'diabetes_train.csv')
 data.file3 <- file.path('data', 'titanic.csv')
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like
-this:
-
-```{r}
+```{r 1#}
 #1. Use ”Su_raw_matrix.txt” for the following questions (30 points).
-# Load in the data set from disk.
 # (a)Use read.delim function to read Su_raw_matrix.txt into a variable called su.
 su <- read.delim(data.file1, header = TRUE)
 # (b) Use mean and sd functions to find mean and standard deviation of Liver_2.CEL column
-print("mean:")
 mean(su[["Liver_2.CEL"]])
-print("sd:")
 sd(su[["Liver_2.CEL"]])
 # (c) Use colMeans and colSums functions to get the average and total values of each column.
-print("colMeans:")
 colMeans(su)
-print("colSums:")
 colSums(su)
 ```
 
-```{r}
+```{r 2#}
 #2. Use rnorm(n, mean = 0, sd = 1) function in R to generate 10000 numbers for the following (mean, sigma) pairs 
 #and plot histogram for each, meaning you need to change the function parameter accordingly. 
 #Then comment on how these histograms are different from each other and state the reason. (20 points)
@@ -67,13 +56,10 @@ show(sigma2ggpot)
 ```
 
 ```{r}
-print("The sigma 0.5 is lower/shorter and wider. The reason for these differences is that
-the standard deviation (sigma) controls the spread of the distribution. A smaller
-sigma results in a narrower distribution, while a larger sigma leads to a wider
-distribution.")
+print("The sigma 0.5 is lower/shorter and wider. The reason for these differences is that the standard deviation (sigma) controls the spread of the distribution. A smaller sigma results in a narrower distribution, while a larger sigma leads to a wider distribution.")
 ```
 
-```{r}
+```{r 3#}
 #3. Perform the steps below with ”dat” dataframe which is just a sample data for you to observe how each plot function
 #( 3b through 3e ) works. Notice that you need to have ggplot2 library installed on your system. Please refer slides how
 #to install and import a library. Installation is done only once, but you need to import the library every time you need it
@@ -136,38 +122,37 @@ show(p3)
 show(p4)
 ```
 
-```{r}
+```{r 4#}
 #4. Read the titanic.csv file from DATA folder to a variable named passengers and perform the following steps and
 #explain the operation very briefly (20 points):
-passengers <- read.csv(data.file3, header = TRUE, sep = ',')
+#passengers <- read.csv(data.file3, header = TRUE, sep = ',')
 #(a) passengers \%>\% drop_na() \%>\% summary()
-print("First drops rows where any column contains a missing value from passengers. Then make the summary.")
-passengers %>% drop_na() %>% summary()
+#passengers %>% drop_na() %>% summary()
+print("This code drops/removes rows where any column contains a missing value(NA) from passengers. Then make the summary of the passengers, typically including measures like Min, 1st Qu., Median, Mean, 3rd Qu., and Max.")
 ```
 
 ```{r}
 #(b) passengers \%>\% filter(Sex == "male")
+#passengers %>% filter(Sex=="male")
 print("This code filters the passengers data to include only rows where the 'Sex' column is equal to 'male'.")
-passengers %>% filter(Sex=="male")
 ```
 
 ```{r}
 #(c) passengers \%>\% arrange(desc(Fare))
+#passengers %>% arrange(desc(Fare))
 print("This code arranges the passengers data in descending order based on the 'Fare' column.")
-passengers %>% arrange(desc(Fare))
 ```
 
 ```{r}
 #(d) passengers \%>\% mutate(FamSize = Parch + SibSp)
+#passengers %>% mutate(FamSize = Parch + SibSp)
 print("This code adds a new column 'FamSize' with the value of column 'Parch' plus the value of column 'SibSp' to the passengers data.")
-#This code adds a new column 'FamSize' with column 'Parch' and 'SibSp' to the passengers data.
-passengers %>% mutate(FamSize = Parch + SibSp)
 ```
 
 ```{r}
 #(e) passengers \%>\% group_by(Sex) \%>\% summarise(meanFare = mean(Fare), numSurv = sum(Survived))
-print("This code groups the passengers data by the 'Sex' column. Then It then calculates the mean of 'Fare' and the sum of 'Survived' for each group ('Sex').")
-passengers %>% group_by(Sex) %>% summarise(meanFare = mean(Fare), numSurv = sum(Survived))
+#passengers %>% group_by(Sex) %>% summarise(meanFare = mean(Fare), numSurv = sum(Survived))
+print("This code groups the passengers data by the 'Sex' column. It then calculates the mean of 'Fare' and the sum of 'Survived' for each group ('Sex').")
 ```
 
 ```{r}
